@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="ke.co.imond.fingermap.AdminActivity"
+    tools:showIn="@layout/app_bar_admin">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/logo"
+            android:padding="2dp"
+            android:background="@color/colorAccent">
+
+            <ImageView
+                android:id="@+id/logoImage"
+                android:layout_width="wrap_content"
+                android:layout_height="221dp"
+                android:layout_marginLeft="80dp"
+                app:srcCompat="@mipmap/bios" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="2dp"
+            android:id="@+id/layout1"
+            android:layout_below="@+id/logo">
+
+            <Button
+                android:id="@+id/addEmployee"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/action_add_student"
+                android:theme="@style/PrimaryButton"
+                android:background="@drawable/round"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/layout2"
+            android:padding="2dp"
+            android:layout_below="@+id/layout1">
+
+            <Button
+                android:id="@+id/viewEmployee"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/action_view_students"
+                android:theme="@style/PrimaryButton"
+                android:background="@drawable/round"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/layout3"
+            android:padding="2dp"
+            android:layout_below="@+id/layout2">
+
+            <Button
+                android:id="@+id/viewRecords"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/action_add_admin"
+                android:theme="@style/PrimaryButton"
+                android:background="@drawable/round"/>
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/layout4"
+            android:padding="2dp"
+            android:layout_below="@+id/layout3">
+
+            <ImageView
+                android:id="@+id/FineThumb"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginLeft="10dp"
+                app:srcCompat="@mipmap/finethumb" />
+            <TextView
+                android:id="@+id/thumbSign"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/FineThumb"
+                android:layout_marginTop="120dp"
+                android:layout_marginLeft="40dp"
+                android:text="@string/clockin" />
+
+            <ImageView
+                android:id="@+id/FineIndex"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginLeft="220dp"
+                app:srcCompat="@mipmap/fineindex" />
+
+            <TextView
+                android:id="@+id/indexSign"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/FineIndex"
+                android:layout_marginTop="120dp"
+                android:layout_marginLeft="245dp"
+                android:text="@string/clockout" />
+        </FrameLayout>
+    </RelativeLayout>
+
+</ScrollView>
+
+

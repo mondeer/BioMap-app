@@ -1,0 +1,143 @@
+<resources>
+    <!--
+
+    == Base Strings For the App ==
+
+     -->
+    <string name="app_name">BioRec</string>
+
+    <string name="action_add_student">Add New Employee</string>
+    <string name="action_view_students">View Employees</string>
+    <string name="action_add_admin">View Clock Records</string>
+    <!--
+
+     == Login and Create Account Strings ==
+
+      -->
+    <!-- Activity Titles  -->
+    <string name="title_activity_create_account">Create Account</string>
+
+    <!-- Login and Create Account Screen  -->
+    <string name="text_dont_have_account">Don\'t have an account?</string>
+    <string name="text_already_have_account">Already have an account?</string>
+    <string name="button_create_account">Sign Up</string>
+    <string name="button_sign_in">Sign In</string>
+    <string name="button_signin_with_google">SIGN IN WITH GOOGLE</string>
+    <string name="button_signin_with_password">SIGN IN</string>
+    <string name="hint_enter_email">Enter your email</string>
+    <string name="hint_enter_username">Enter your name</string>
+    <string name="hint_enter_password">Enter password</string>
+    <string name="image_view_logo_image">Logo Image</string>
+
+    <!-- Instructions and Loading Text -->
+    <string name="progress_dialog_loading">Loading…</string>
+    <string name="progress_dialog_authenticating_with_firebase">Authenticating with Firebase…</string>
+    <string name="progress_dialog_creating_user_with_firebase">Attempting to create account…</string>
+    <string name="progress_dialog_check_inbox">Please check your inbox for your password</string>
+
+    <!-- Errors -->
+    <string name="dialog_title_error">Error</string>
+    <string name="error_message_failed_sign_in_no_network">There was a problem with the network connection.\nAre you sure you\'re connected to the internet?</string>
+    <string name="log_error_invalid_provider">"Invalid provider: "</string>
+    <string name="log_error_failed_to_change_password">"Failed to change the password: "</string>
+    <string name="error_invalid_email_not_valid">%s is not a valid email</string>
+    <string name="error_message_email_issue">There was an error with your email; please check that you entered it correctly.</string>
+    <string name="error_you_didnt_give_permissions">You must give ShoppingList++ permission to access your Google account information if you want to use Google sign-in.</string>
+    <string name="error_email_taken">The email is already taken.</string>
+    <string name="error_invalid_password_not_valid">Please enter a password that is at least 6 characters long.</string>
+    <string name="error_cannot_be_empty">This cannot be empty.</string>
+
+    <!-- Google Errors -->
+    <string name="google_error_recoverable_oauth_error">"Recoverable Google OAuth error: "</string>
+    <string name="google_error_google_play_services_not_available">Google Play Services are not available.</string>
+    <string name="google_error_trying_to_connect_google_api">Trying to connect to Google API</string>
+    <string name="google_error_auth_with_google">"Error authenticating with Google: "</string>
+    <string name="google_error_network_error">"Network error: "</string>
+    <string name="google_error_cant_connect_to_api">Are you sure that you set up a project for your app?
+        Check out : https://console.developers.google.com/project. Also make sure you have all the proper
+    gradle dependencies</string>
+
+    <string name="strStName">Student Name</string>
+    <string name="strStDetails">Student Name</string>
+
+    <string name="txt_fingerplace">Please press finger &#8230;</string>
+    <string name="txt_fpbegin">Use Card or Finger</string>
+    <string name="txt_fpplace">Please press finger</string>
+    <string name="txt_fpdisplay">Display fingerprint image &#8230;</string>
+    <string name="txt_fpprocess">Start processing &#8230;</string>
+    <string name="txt_fpidentify">Being Identified &#8230;</string>
+    <string name="txt_fpfail">Failed to generate!</string>
+    <string name="txt_fpmatchok">Match OK!</string>
+    <string name="txt_fpmatchfail">Match Fail!</string>
+    <string name="txt_cardmatch">Successfully Matched</string>
+    <string name="txt_cardsn">Card SN:</string>
+    <string name="txt_fpmatching">Matching &#8230;</string>
+    <string name="txt_snerror">SN Error</string>
+    <string name="txt_fpclick">Click the fingerprint icon to begin</string>
+
+    <string name="txt_query">Query Type</string>
+    <string name="txt_count">Records:0</string>
+    <string name="txt_regno">RegNo</string>
+    <string name="txt_name">Name</string>
+    <string name="txt_clockin">ClockIn</string>
+    <string name="txt_clockout">ClockOut</string>
+    <string name="txt_timein">Time In</string>
+    <string name="action_query">Filter</string>
+    <string name="action_clear">Clear Data</string>
+
+    <string-array name="quy_array">
+        <item>All</item>
+        <item>ID</item>
+        <item>Name</item>
+    </string-array>
+
+
+    <!-- OAuth Format -->
+    <string name="oauth2_format">oauth2:%s</string>
+
+    <!-- Log Messages -->
+    <string name="log_message_password_changed_successfully">Password changed successfully from temporary password to </string>
+    <string name="log_message_auth_successful">auth successful.</string>
+
+
+    <!-- Activity Titles -->
+    <string name="action_settings">Settings</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password (optional)</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+
+    <!-- Values -->
+    <string name="sort_by_publish_time_value">orderByPushKey</string>
+    <string name="sort_by_list_name_value">listName</string>
+    <string name="sort_by_owner_value">owner</string>
+    <string name="sort_by_most_recently_changed_value">timestampLastChangedReverse/timestamp</string>
+    <string name="title_activity_admin">Biometrics Master</string>
+    <string name="title_activity_main">BioRec Master</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="title_activity_enroll">Enroll New Employee</string>
+    <string name="title_activity_clockin">Sign IN Register</string>
+    <string name="title_activity_clockout">Sign OUT Register</string>
+    <string name="Department">DEPARTMENT</string>
+    <string name="add_employee">Add Employee</string>
+    <string name="nfc_card">NFC Card</string>
+    <string name="clockin">ClockIN</string>
+    <string name="clockout">ClockOUT</string>
+    <string name="biometric_master">BioRec</string>
+    <string name="nfc_card_register">Place NFC card Behind the device to record NFC</string>
+    <string name="top_hint">Barcode or two-dimensional code is placed within the frame system will automatically scan</string>
+    <string name="title_activity_records">RecordsActivity</string>
+    <string name="title_activity_empview">EmpviewActivity</string>
+    <string name="title_activity_employeeview">view Employees Activity</string>
+</resources>

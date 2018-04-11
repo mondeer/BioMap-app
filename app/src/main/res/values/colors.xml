@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#B71C1C</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#d32f2f</color>
+    <color name="colorTrans">#b4000000</color>
+    <color name="black">#000000</color>
+    <color name="light_black">#90000000</color>
+    <color name="dark_grey">#424242</color>
+    <color name="primary">#2196F3</color>
+    <!--Red-->
+    <color name="redDark">#B71C1C</color>
+    <color name="capture_text_cover_bg">#99535353</color>
+</resources>

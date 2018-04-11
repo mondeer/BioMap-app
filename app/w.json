@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "161648624064",
+    "firebase_url": "https://imond-solutions.firebaseio.com",
+    "project_id": "imond-solutions",
+    "storage_bucket": "imond-solutions.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:161648624064:android:a75f1feb7b3a218c",
+        "android_client_info": {
+          "package_name": "ke.co.imond.fingermap"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "161648624064-hhjbqplbmhdcjqrevsu6pl43j0dh0e5b.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ke.co.imond.fingermap",
+            "certificate_hash": "8e9a885eace71aa429c1deb1d121ccd3d67e58f4"
+          }
+        },
+        {
+          "client_id": "161648624064-bhba22fc645cb24e6bbqlm2jdjrmnsh8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDlpv9ZtVUMDm9l0rsoptppQ2aukWzB17g"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "161648624064-bhba22fc645cb24e6bbqlm2jdjrmnsh8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
