@@ -12,8 +12,8 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.text.format.Time;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
@@ -30,7 +30,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
-import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -48,6 +47,7 @@ import ke.co.imond.fingermap.Data.Clockins;
 import ke.co.imond.fingermap.Data.Clockouts;
 import ke.co.imond.fingermap.Data.ImageSimpleAdapter;
 import ke.co.imond.fingermap.Data.Employee;
+import ke.co.imond.fingermap.Data.Records;
 import ke.co.imond.fingermap.utils.ExtApi;
 
 public class ClockoutActivity extends AppCompatActivity {
@@ -159,6 +159,19 @@ public class ClockoutActivity extends AppCompatActivity {
         processIntent(intent);
     }
 
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if(keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN){
+            bIsCancel=true;
+            SerialPortManager.getInstance().closeSerialPort();
+            this.finish();
+            return true;
+        } else if(keyCode == KeyEvent.KEYCODE_HOME){
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
     private void processIntent(Intent intent){
         byte[] sn = intent.getByteArrayExtra(NfcAdapter.EXTRA_ID);
         final String cardsn=
@@ -220,10 +233,14 @@ public class ClockoutActivity extends AppCompatActivity {
         query.orderByChild("userID").equalTo(employee.getEmpID()).addListenerForSingleValueEvent(new ValueEventListener() {
             String ClockoutID = mDatabase.child("clockouts").push().getKey();
             String UserID = employee.getEmpID();
+            String recID = mDatabase.child("records").push().getKey();
             String Designation=employee.getDesignation();
             String name=employee.getLast_name()+" "+employee.getFirst_name();
+            String empPf_no = employee.getPf_no();
             String ClockoutTime= ExtApi.getStringDate();
+            String Clockin_time = "";
             String ClockinID= "";
+            String time_in = "";
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
@@ -235,6 +252,7 @@ public class ClockoutActivity extends AppCompatActivity {
                             assert clockin != null;
                             if (getDate(clockin.getClocktime()).equals(getDate(ClockoutTime)))
                                 ClockinID = clockin.getClockinID();
+                                Clockin_time = clockin.getClocktime();
                                 Toast.makeText(ClockoutActivity.this, "Hi "+ClockinID, Toast.LENGTH_SHORT).show();
                         } catch (ParseException e) {
                             e.printStackTrace();
@@ -243,14 +261,18 @@ public class ClockoutActivity extends AppCompatActivity {
                 }
                 Toast.makeText(ClockoutActivity.this, "Hi", Toast.LENGTH_SHORT).show();
                 Clockouts clockouts = new Clockouts(UserID, ClockinID, ClockoutID, ClockoutTime);
-                mDatabase.child("clockouts").push().setValue(clockouts);
 
-                HashMap<String, Object> map = new HashMap<String, Object>();
                 try {
-                    map.put("title", getDate(ClockoutTime));
+                    time_in = timeDiff(Clockin_time, ClockoutTime);
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
+                Records records = new Records(empPf_no, name, Clockin_time, ClockoutTime, time_in);
+                mDatabase.child("clockouts").child(ClockoutID).setValue(clockouts);
+                mDatabase.child("records").child(recID).setValue(records);
+
+                HashMap<String, Object> map = new HashMap<String, Object>();
+                map.put("title", name);
                 map.put("info", Designation);
                 map.put("dts", ClockoutTime);
                 map.put("img", ExtApi.LoadBitmap(getResources(),R.mipmap.admin));
@@ -266,6 +288,20 @@ public class ClockoutActivity extends AppCompatActivity {
 
 //        end of getting the clockin ID
 
+    }
+    public static String timeDiff(String clockin, String clockout) throws ParseException {
+        SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+
+        Date timein = format.parse(clockin);
+        Date timeout = format.parse(clockout);
+
+        long mills = timeout.getTime() - timein.getTime();
+        int hours = (int) (mills/(1000 * 60 * 60));
+        int mins = (int) (mills/(1000*60)) % 60;
+
+        String diff = hours + ":" + mins;
+
+        return diff;
     }
 
     @SuppressLint("DefaultLocale")

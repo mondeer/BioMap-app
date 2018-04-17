@@ -16,6 +16,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
@@ -223,28 +224,27 @@ public class ClockinActivity extends AppCompatActivity {
 
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists()) {
+//                if (dataSnapshot.exists()) {
                     // dataSnapshot is the "issue" node with all children with id 0
                     for (DataSnapshot clockinSnapshot : dataSnapshot.getChildren()) {
                         Clockins clockin = clockinSnapshot.getValue(Clockins.class);
 
-                        mDatabase.child("clockins").push().setValue((new Clockins(UserID, ClockID, ClockinTime)));
-
                         try {
                             assert clockin != null;
-                            if (!(getDate(clockin.getClocktime()).equals(getDate(ClockinTime)))){
+                            if (getDate(clockin.getClocktime()).equals(getDate(ClockinTime))){
 
                                 Toast.makeText(ClockinActivity.this, "Cant Clockin twice in a day", Toast.LENGTH_SHORT).show();
                             }
                             else
                                 Toast.makeText(ClockinActivity.this, "awesome", Toast.LENGTH_SHORT).show();
-
                         } catch (ParseException e) {
                             e.printStackTrace();
                         }
                     }
-                }
+//                }
 
+                mDatabase.child("clockins").push().setValue((new Clockins(UserID, ClockID, ClockinTime)));
+                Toast.makeText(ClockinActivity.this, "awesome", Toast.LENGTH_SHORT).show();
                 HashMap<String, Object> map = new HashMap<String, Object>();
                 map.put("title", name);
                 map.put("info", NFC);
@@ -400,6 +400,18 @@ public class ClockinActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if(keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN){
+            bIsCancel=true;
+            SerialPortManager.getInstance().closeSerialPort();
+            this.finish();
+            return true;
+        } else if(keyCode == KeyEvent.KEYCODE_HOME){
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
 
     public void TimerStart(){
         if(startTimer==null){
