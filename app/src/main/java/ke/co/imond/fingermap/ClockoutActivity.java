@@ -259,11 +259,12 @@ public class ClockoutActivity extends AppCompatActivity {
                         }
                     }
                 }
-                Toast.makeText(ClockoutActivity.this, "Hi", Toast.LENGTH_SHORT).show();
+
                 Clockouts clockouts = new Clockouts(UserID, ClockinID, ClockoutID, ClockoutTime);
 
                 try {
                     time_in = timeDiff(Clockin_time, ClockoutTime);
+                    Toast.makeText(ClockoutActivity.this, "Hi"+time_in, Toast.LENGTH_SHORT).show();
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
@@ -290,7 +291,7 @@ public class ClockoutActivity extends AppCompatActivity {
 
     }
     public static String timeDiff(String clockin, String clockout) throws ParseException {
-        SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+        SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyy HH:mm:ss");
 
         Date timein = format.parse(clockin);
         Date timeout = format.parse(clockout);

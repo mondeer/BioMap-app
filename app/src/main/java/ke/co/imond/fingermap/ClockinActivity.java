@@ -224,7 +224,7 @@ public class ClockinActivity extends AppCompatActivity {
 
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-//                if (dataSnapshot.exists()) {
+                if (dataSnapshot.exists()) {
                     // dataSnapshot is the "issue" node with all children with id 0
                     for (DataSnapshot clockinSnapshot : dataSnapshot.getChildren()) {
                         Clockins clockin = clockinSnapshot.getValue(Clockins.class);
@@ -232,19 +232,19 @@ public class ClockinActivity extends AppCompatActivity {
                         try {
                             assert clockin != null;
                             if (getDate(clockin.getClocktime()).equals(getDate(ClockinTime))){
-
                                 Toast.makeText(ClockinActivity.this, "Cant Clockin twice in a day", Toast.LENGTH_SHORT).show();
                             }
                             else
+                                mDatabase.child("clockins").child(ClockID).setValue((new Clockins(UserID, ClockID, ClockinTime)));
                                 Toast.makeText(ClockinActivity.this, "awesome", Toast.LENGTH_SHORT).show();
                         } catch (ParseException e) {
                             e.printStackTrace();
                         }
                     }
-//                }
+                }else
+                    mDatabase.child("clockins").child(ClockID).setValue((new Clockins(UserID, ClockID, ClockinTime)));
 
-                mDatabase.child("clockins").push().setValue((new Clockins(UserID, ClockID, ClockinTime)));
-                Toast.makeText(ClockinActivity.this, "awesome", Toast.LENGTH_SHORT).show();
+                //                Toast.makeText(ClockinActivity.this, "awesome", Toast.LENGTH_SHORT).show();
                 HashMap<String, Object> map = new HashMap<String, Object>();
                 map.put("title", name);
                 map.put("info", NFC);
